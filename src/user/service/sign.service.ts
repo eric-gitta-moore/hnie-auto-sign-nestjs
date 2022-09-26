@@ -60,4 +60,14 @@ export abstract class SignService {
     }
     return result;
   }
+
+  public abstract doSign(...args: any):
+    | {
+        message?: string;
+        result: boolean;
+      }
+    | Promise<{
+        message?: string;
+        result: boolean;
+      }>;
 }

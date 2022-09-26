@@ -1,5 +1,5 @@
 import { DailySignSubmitRequest } from '../../user/dto/dailySignSubmit.dto';
-import { SignConfig, signFormData } from './signConfigDTO';
+import { signFormData } from './signConfigDTO';
 
 type signFormDataKey = keyof signFormData;
 type DailySignSubmitRequestKey = keyof DailySignSubmitRequest;
@@ -7,7 +7,7 @@ export type SignConfig2DailySignSubmitRequestDTOMappingType = {
   [k in signFormDataKey]: DailySignSubmitRequestKey;
 };
 
-export const SignConfig2DailySignSubmitRequestDTOMapping: SignConfig2DailySignSubmitRequestDTOMappingType =
+export const SignFormData2DailySignSubmitRequestDTOMapping: SignConfig2DailySignSubmitRequestDTOMappingType =
   {
     address: 'dkdz',
     position: 'dkdzZb',
@@ -20,12 +20,12 @@ export const SignConfig2DailySignSubmitRequestDTOMapping: SignConfig2DailySignSu
     phone: 'lxdh',
   };
 
-export function signConfig2DailySignSubmitRequestDTOMapping(
+export function signForm2DailySignSubmitRequestDTOMapping(
   config: signFormData,
 ) {
   const res: Partial<DailySignSubmitRequest> = {};
   for (const configKey in config) {
-    res[SignConfig2DailySignSubmitRequestDTOMapping[configKey]] =
+    res[SignFormData2DailySignSubmitRequestDTOMapping[configKey]] =
       config[configKey];
   }
   return res;

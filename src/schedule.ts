@@ -5,10 +5,11 @@ import { IndexModule } from './index/index.module';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
-  const indexService = app
+  await app.select(IndexModule).get(IndexService, { strict: true }).dailySign();
+  await app
     .select(IndexModule)
-    .get(IndexService, { strict: true });
-  await indexService.dailySign();
+    .get(IndexService, { strict: true })
+    .apartmentSign();
   await app.close();
 }
 bootstrap();

@@ -7,8 +7,10 @@ import * as JSON5 from 'json5';
 import CryptoJS from 'crypto-js/core';
 import 'crypto-js/enc-base64';
 import { ApartmentSignService } from '../../../user/service/impl/apartmentSign.service';
-import { signConfig2DailySignSubmitRequestDTOMapping } from '../../dto/signConfig2DailySignSubmitRequestDTOMapping';
-import { SignConfig } from 'src/index/dto/signConfigDTO';
+import { SignConfig, signFormData } from 'src/index/dto/signConfigDTO';
+import { SignService } from '../../../user/service/sign.service';
+import { DailySignSubmitRequest } from '../../../user/dto/dailySignSubmit.dto';
+import { signForm2DailySignSubmitRequestDTOMapping } from '../../dto/signFormData2DailySignSubmitRequestDTOMapping';
 
 @Injectable()
 export class IndexService {
@@ -47,34 +49,47 @@ export class IndexService {
     return [];
   }
 
+  protected async commonSign(
+    loadUserGenerator: Generator,
+    signService: SignService,
+    loggerName: string,
+  ) {
+    const it = loadUserGenerator;
+    let param = it.next();
+    while (!param.done && param.value) {
+      signService.setUser(this.accountData);
+      const loginStatus = await signService.doLogin();
+      const currentUserSummary = this.accountData.account.substring(
+        this.accountData.account.length - 4,
+      );
+      if (loginStatus !== true) {
+        this.logger.warn(
+          `[${currentUserSummary}]登录失败: ${loginStatus?.msg}`,
+        );
+        param = it.next();
+        continue;
+      }
+      const res = await signService.doSign(param.value);
+      this.logger.log(
+        `[${currentUserSummary}] [${loggerName}]: ${
+          res.result ? '成功' : '失败'
+        } 返回消息: ${res?.message}`,
+      );
+      param = it.next();
+    }
+  }
+
   /**
    * 日常打卡
    */
   @Cron('0 1 6 * * *')
   async dailySign() {
     this.logger.log('===========日常打卡开始');
-    const it = this.loadUser();
-    let param = it.next();
-    while (!param.done && param.value) {
-      this.dailySignService.setUser(this.accountData);
-      const loginStatus = await this.dailySignService.doLogin();
-      const currentUserSummary = this.accountData.account.substring(
-        this.accountData.account.length - 4,
-      );
-      if (loginStatus !== true) {
-        this.logger.error(
-          `[${currentUserSummary}]登录失败: ${loginStatus?.msg}`,
-        );
-        continue;
-      }
-      const result = await this.dailySignService.doSign(param.value);
-      this.logger.log(
-        `[${currentUserSummary}]签到结果: ${
-          !result ? '失败' : result.result ? '成功' : '失败'
-        } 返回消息: ${!result || result.message}`,
-      );
-      param = it.next();
-    }
+    const it = this.loadUser(
+      'dailySignFormData',
+      signForm2DailySignSubmitRequestDTOMapping,
+    );
+    await this.commonSign(it, this.dailySignService, '日常打卡');
     this.logger.log('===========日常打卡结束');
   }
 
@@ -84,33 +99,19 @@ export class IndexService {
   @Cron('0 2 22 * * *')
   async apartmentSign() {
     this.logger.log('===========晚归签到开始');
-    const it = this.loadUser();
-    let param = it.next();
-    while (!param.done && param.value) {
-      this.apartmentSignService.setUser(this.accountData);
-      const loginStatus = await this.apartmentSignService.doLogin();
-      const currentUserSummary = this.accountData.account.substring(
-        this.accountData.account.length - 4,
-      );
-      if (loginStatus !== true) {
-        this.logger.error(
-          `[${currentUserSummary}]登录失败: ${loginStatus?.msg}`,
-        );
-        continue;
-      }
-      // TODO: 这里参数不知道是啥
-      const res = await this.apartmentSignService.doSign(param.value);
-      param = it.next();
-    }
+    const it = this.loadUser('apartmentSignFormData');
+    await this.commonSign(it, this.apartmentSignService, '晚归打卡');
     this.logger.log('===========晚归签到结束');
   }
 
-  private *loadUser() {
+  private *loadUser<T extends keyof SignConfig[number]>(
+    key: T,
+    translateFn?: (formData: SignConfig[number][T]) => unknown,
+  ) {
     for (const signConfigElement of this.signConfig) {
       this.accountData = signConfigElement.account;
-      yield signConfig2DailySignSubmitRequestDTOMapping(
-        signConfigElement.signFormData,
-      );
+      if (translateFn) yield translateFn(signConfigElement[key]);
+      yield signConfigElement[key];
     }
   }
 }

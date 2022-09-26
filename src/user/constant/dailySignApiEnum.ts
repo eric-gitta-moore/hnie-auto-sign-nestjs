@@ -1,22 +1,23 @@
-export enum DailySignApiEnum {
-  indexPageUrl = 'http://xggl.hnie.edu.cn/wap/main/welcome',
-  loginApi = 'http://xggl.hnie.edu.cn/website/login',
-  signLogApi = 'http://xggl.hnie.edu.cn/content/tabledata/student/temp/zzdk',
-  signPageApi = 'http://xggl.hnie.edu.cn/wap/menu/student/temp/zzdk/_child_/edit',
-  patchSignApi = 'http://xggl.hnie.edu.cn/content/student/temp/zzdk',
+export const dailySignApiPrefix = 'http://xggl.hnie.edu.cn';
+export class DailySignApiEnum {
+  static indexPageUrl = `${dailySignApiPrefix}/wap/main/welcome`;
+  static loginApi = `${dailySignApiPrefix}/website/login`;
+  static signLogApi = `${dailySignApiPrefix}/content/tabledata/student/temp/zzdk`;
+  static signPageApi = `${dailySignApiPrefix}/wap/menu/student/temp/zzdk/_child_/edit`;
+  static patchSignApi = `${dailySignApiPrefix}/content/student/temp/zzdk`;
 }
 
-export enum ApartmentSignApiEnum {
-  indexPageUrl = 'http://ssgl.hnie.edu.cn/wap/main/welcome',
-  loginApi = 'http://ssgl.hnie.edu.cn/website/login',
+export const apartmentSignApiPrefix = `http://ssgl.hnie.edu.cn`;
+export class ApartmentSignApiEnum {
+  static indexPageUrl = `${apartmentSignApiPrefix}/wap/main/welcome`;
+  static loginApi = `${apartmentSignApiPrefix}/website/login`;
   /**
    * 获取签到范围
    */
-  getTaskScope = 'http://ssgl.hnie.edu.cn/content/gygl/sign/stu/task/scopes',
+  static getTaskScope = `${apartmentSignApiPrefix}/content/gygl/sign/stu/task/scopes`;
   /**
    * 提交签到
    */
-  submitSign = 'http://ssgl.hnie.edu.cn/content/gygl/sign/stu/sign',
-  signLogApi = 'http://xggl.hnie.edu.cn/content/tabledata/student/temp/zzdk',
-  signPageApi = 'http://xggl.hnie.edu.cn/wap/menu/student/temp/zzdk/_child_/edit',
+  static submitSign = `${apartmentSignApiPrefix}/content/gygl/sign/stu/sign`;
+  static signList = `${apartmentSignApiPrefix}/content/tabledata/gygl/sign/stu/sign`;
 }

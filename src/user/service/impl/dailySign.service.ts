@@ -33,7 +33,10 @@ export class DailySignService extends SignService {
   async doSign(param: Partial<DailySignSubmitRequest>) {
     const htmlData = await this.dailySignApiService.getSignPage();
     const regex = /zzdk_token['"]\s*?value=["']([\w\d]+)["']/i;
-    if (!regex.test(htmlData)) return false;
+    if (!regex.test(htmlData))
+      return {
+        result: false,
+      };
     const token = regex.exec(htmlData)[1];
     const submitParam = getDailySignRequestParam(param);
     const result = await this.dailySignApiService.submitSign(

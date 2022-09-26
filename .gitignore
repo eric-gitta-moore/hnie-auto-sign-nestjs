@@ -4,6 +4,9 @@
 
 .env.local
 
+/test.js
+/test.ts
+
 # Logs
 logs
 *.log

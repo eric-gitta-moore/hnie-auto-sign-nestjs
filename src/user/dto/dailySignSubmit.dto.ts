@@ -60,16 +60,28 @@ export function getDailySignRequestParam(
 ): Omit<DailySignSubmitRequest, 'zzdk_token'> {
   return Object.assign(
     {
-      dkdz: '湖南省郴州市北湖区五岭大道9号',
-      dkdzZb: '113.014999,25.7706',
-      dkly: 'baidu',
-      dkd: '湖南省郴州市',
-      jzdValue: '430000,431000,431081',
+      /**
+       * 打卡位置
+       */
+      dkdz: '湖南省 湘潭市 岳塘区 至善路 154号 靠近明德公寓1栋学生公寓 ',
+      dkdzZb: '112.934325,27.84791',
+      /**
+       * 打卡依赖
+       */
+      dkly: 'yiban',
+      /**
+       * 打卡地
+       */
+      dkd: '湖南省 湘潭市',
+      jzdValue: '430000,430300,430304',
       'jzdSheng.dm': '430000',
-      'jzdShi.dm': '431000',
-      'jzdXian.dm': '431081',
-      jzdDz: '湖南省郴州市北湖区五岭大道9号',
-      jzdDz2: '湖南省郴州市北湖区五岭大道9号',
+      'jzdShi.dm': '430300',
+      'jzdXian.dm': '430304',
+      jzdDz: '湖南省湘潭市岳塘区福星中路88号 湖南工程学院',
+      jzdDz2: '湖南省湘潭市岳塘区福星中路88号 湖南工程学院',
+      /**
+       * 联系电话
+       */
       lxdh: '15911111111',
       sfzx: '1',
       sfzx1: '在校',
@@ -102,8 +114,8 @@ export function getDailySignRequestParam(
       xcm1: '绿色',
       xgym: '2',
       xgym1: '',
-      hsjc: '0',
-      hsjc1: '',
+      hsjc: '1',
+      hsjc1: '是',
       bz: '',
       operationType: 'Create',
       dm: '',
