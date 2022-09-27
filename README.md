@@ -49,7 +49,7 @@
    - ![](https://tva1.sinaimg.cn/large/008d89Swgy1h5mbcmdigsj31hc0swtni.jpg)
 3. 进入 `代码管理`。在右上角找到 `导入代码库`
    - ![](https://tva1.sinaimg.cn/large/008d89Swgy1h5mbdpyvlij31hc0swajs.jpg)
-   - 按照下面示例进行填写，仓库地址是：`https://github.com/james-curtis/hnie-auto-sign.git`
+   - 按照下面示例进行填写，仓库地址是：`https://github.com/james-curtis/hnie-auto-sign-nestjs.git`
    - ![](https://tva1.sinaimg.cn/large/008d89Swgy1h5mbehv5e7j30lf0mytbr.jpg)
 4. 创建流水线
    - 点击左侧的 `流水线`
@@ -120,7 +120,7 @@
 4. 进入之后点击右上角的蓝色按钮 `新建流水线`
 5. `请选择流水线模板` 这里选择最底部的 `其他 · 空模板`，然后点击创建
 6. 打开时候会自动在右侧弹出一个 `代码源` 窗口，这里选择 `通用Git`
-7. `代码仓库` 填写 `https://github.com/james-curtis/hnie-auto-sign.git`
+7. `代码仓库` 填写 `https://github.com/james-curtis/hnie-auto-sign-nestjs.git`
 8. `默认分支` 填写 `main`
 9. 点击 `服务连接` 的 `添加服务连接`
 10. 在弹出窗口中，点击 `服务授权/证书` 右侧的 `新建` 按钮
