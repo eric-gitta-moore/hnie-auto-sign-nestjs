@@ -4,7 +4,7 @@ import { IUserOptions } from 'src/types/interface';
 import { DailySignService } from '../../../user/service/impl/dailySign.service';
 import { ConfigService } from '@nestjs/config';
 import * as JSON5 from 'json5';
-import CryptoJS from 'crypto-js/core';
+import * as CryptoJS from 'crypto-js/core';
 import 'crypto-js/enc-base64';
 import { ApartmentSignService } from '../../../user/service/impl/apartmentSign.service';
 import { SignConfig, signFormData } from 'src/index/dto/signConfigDTO';

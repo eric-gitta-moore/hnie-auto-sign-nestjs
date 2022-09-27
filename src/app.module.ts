@@ -5,7 +5,7 @@ import { HttpModule } from './http/http.module';
 import { ConfigModule } from '@nestjs/config';
 import Ajv from 'ajv';
 import * as JSON5 from 'json5';
-import CryptoJS from 'crypto-js/core';
+import * as CryptoJS from 'crypto-js/core';
 import 'crypto-js/enc-base64';
 
 const configSchemaText = {
