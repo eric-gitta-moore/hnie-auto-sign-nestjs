@@ -79,7 +79,7 @@
    - 在刚才步骤的基础之上，再选择 `添加插件` -> `邮件通知`
    - ![image.png](https://tva1.sinaimg.cn/large/008d89Swgy1h6kwz2hbcbj30db0e2gmv.jpg)
    - 完成之后，你的界面应该是这样的
-   - ![image.png](https://tva1.sinaimg.cn/large/008d89Swgy1h6kwxw0qd3j31hs0sw10t.jpg)
+   - ![image.png](https://tva1.sinaimg.cn/large/008d89Swgy1h6kx0h41oaj31hs0sw46o.jpg)
 7. 配置定时任务
    - 接着配置定时触发该流水线
    - 点击顶部的 `触发设置`
