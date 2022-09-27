@@ -139,66 +139,54 @@
 
 ## 数据格式
 
-签到JSON数据的Schema请参阅：[schema.json](./dcos/schema.json)
-
 签到数据示例：
 ```json5
 [
-  // 每一个对象就是一个签到账号
+  /**
+   * 第一个账号
+   */
   {
-    "account": {
-      // 账号，这里的账号密码是http://xggl.hnie.edu.cn/这个网站的
-      "account": "demo",
-      // 密码，默认是Hnie@身份证后六位
-      "password": "Hnie@demo"
+    account: {
+      /**
+       * 账号
+       */
+      account: 'demo1',
+      /**
+       * 密码
+       * 默认是：Hnie@身份证后六位(包括最后一个大写字母)
+       */
+      password: 'Hnie@demo1',
     },
-    "signFormData": {
-      // 签到所在地（地图api定位结果）
-      "address": "湖南省郴州市北湖区五岭大道9号",
-      // 签到所在地经纬度
-      "position": "113.014999,25.7706",
-      // 签到地址（精确的县级）
-      "signAddress": "湖南省郴州市",
-      // 省会邮编
-      "provinceZipCode": "430000",
-      // 市中心邮编
-      "cityZipCode": "431000",
-      // 县中心邮编
-      "countyZipCode": "431081",
-      // 现居地详细地址
-      "habitationDetailDesc": "湖南省郴州资兴市鲤鱼江KFC",
-      // 常住地详细地址
-      "usualResidenceDetailDesc": "湖南省郴州资兴市鲤鱼江KFC",
-      // 手机号
-      "phone": "15971115555"
-    }
+    /**
+     * 日常打卡配置
+     */
+    dailySignFormData: {
+      /**
+       * 联系电话
+       * @example 13566669999
+       */
+      phone: '13566669999',
+    },
+    /**
+     * 晚归打卡配置
+     */
+    apartmentSignFormData: {},
   },
+  /**
+   * 第二个账号
+   */
   {
-    "account": {
-      "account": "demo",
-      "password": "Hnie@demo"
+    account: {
+      account: 'demo2',
+      password: 'Hnie@demo2',
     },
-    "signFormData": {
-      "address": "湖南省郴州市北湖区五岭大道9号",
-      "position": "113.014999,25.7706",
-      "signAddress": "湖南省郴州市",
-      "provinceZipCode": "430000",
-      "cityZipCode": "431000",
-      "countyZipCode": "431081",
-      "habitationDetailDesc": "湖南省郴州资兴市鲤鱼江KFC",
-      "usualResidenceDetailDesc": "湖南省郴州资兴市鲤鱼江KFC",
-      "phone": "15971115555"
-    }
-  }
+    dailySignFormData: {
+      phone: '13566669999',
+    },
+    apartmentSignFormData: {},
+  },
 ]
 ```
-
-## 验证配置是否正确
-
-请使用 [Json Schema Validator](https://www.jsonschemavalidator.net/)，左边填写[schema.json](./dcos/schema.json)中的内容，右边填写你的配置
-
-示例：
-![img](https://tva1.sinaimg.cn/large/008d89Swgy1h5lsymyxakj31hc0m1gvf.jpg)
 
 ## 注意
 海外ip好像无法签到，打开页面会显示 `502`
