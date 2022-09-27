@@ -70,17 +70,16 @@
   - `请填写 Node 版本` 修改为 `16`
   - `构建命令` 填写为如下
    ```shell
-   npm ci
-   npm run build
-   npm run start
+   yarn
+   yarn start:cron
    ```
   - 此刻你的界面应该是这样
-  - ![](https://tva1.sinaimg.cn/large/008d89Swgy1h5mfbszcb3j31hc0swahi.jpg)
+  - ![image.png](https://tva1.sinaimg.cn/large/008d89Swgy1h6kwwqzub8j31hs0swwmp.jpg)
 6. 配置邮件通知
    - 在刚才步骤的基础之上，再选择 `添加插件` -> `邮件通知`
    - ![](https://tva1.sinaimg.cn/large/008d89Swgy1h5mfdotwqsj30fc0kitak.jpg)
    - 完成之后，你的界面应该是这样的
-   - ![](https://tva1.sinaimg.cn/large/008d89Swgy1h5mftnxhxtj30e10aqdgb.jpg)
+   - ![image.png](https://tva1.sinaimg.cn/large/008d89Swgy1h6kwxw0qd3j31hs0sw10t.jpg)
 7. 配置定时任务
    - 接着配置定时触发该流水线
    - 点击顶部的 `触发设置`
