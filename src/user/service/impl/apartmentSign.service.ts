@@ -30,7 +30,7 @@ export class ApartmentSignService extends SignService {
    */
   async doSign(param: Partial<SubmitSignRequest>) {
     const isAvailable = await this.apartmentSignApiService.isAvailableSign();
-    if (isAvailable) {
+    if (!isAvailable) {
       return { result: true, message: '已经打卡完成' };
     }
     const signList = await this.apartmentSignApiService.getSignList();

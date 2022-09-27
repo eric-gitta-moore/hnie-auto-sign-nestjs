@@ -14,6 +14,7 @@ import {
   apartmentSignListResponse,
   getApartmentSignListRequest,
 } from '../dto/apartmentSignList.dto';
+import * as formurlencoded from 'form-urlencoded';
 
 @Injectable()
 export class ApartmentSignApiService {
@@ -35,11 +36,18 @@ export class ApartmentSignApiService {
   async submitSign(param: SubmitSignRequest) {
     const res = await this.httpService
       .getInstance()
-      .post<SubmitSignResponse>(ApartmentSignApiEnum.submitSign, param, {
-        params: {
-          _t_s_: Date.now().toString(),
+      .post<SubmitSignResponse>(
+        ApartmentSignApiEnum.submitSign,
+        formurlencoded(param),
+        {
+          params: {
+            _t_s_: Date.now().toString(),
+          },
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
         },
-      });
+      );
     return res.data;
   }
 
@@ -55,6 +63,6 @@ export class ApartmentSignApiService {
   async isAvailableSign() {
     const data = await this.getSignList();
     if (data.aaData.length === 0) return false;
-    return !!data.aaData[0].QDSJ;
+    return !data.aaData[0].QDSJ;
   }
 }
