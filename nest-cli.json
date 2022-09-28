@@ -3,8 +3,11 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "projects": {
-    "schedule": {
-      "entryFile": "schedule"
+    "daily": {
+      "entryFile": "bootstrapDailySign"
+    },
+    "apartment": {
+      "entryFile": "bootstrapApartmentSign"
     }
   }
 }
