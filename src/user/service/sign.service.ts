@@ -49,7 +49,11 @@ export abstract class SignService {
   }
 
   async doLogin() {
-    await this.preRequest();
+    // try {
+    //   await this.preRequest();
+    // } catch (e) {
+    //   console.error(e);
+    // }
     const result = await this.signApiService.login(
       this.account,
       SignService.cryptoPassword(this.password),
