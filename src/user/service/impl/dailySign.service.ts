@@ -3,7 +3,7 @@ import 'crypto-js/md5';
 import dayjs from 'dayjs';
 import { DailySignApiEnum } from '../../constant/dailySignApiEnum';
 import { SignService } from '../sign.service';
-import { HttpService } from '../../../http/http.service';
+import { HttpService } from '../../../http/service/impl/http.service';
 import { DailySignApiService } from '../../api/dailySignApi.service';
 import { SignApiService } from '../../api/signApi.service';
 import {

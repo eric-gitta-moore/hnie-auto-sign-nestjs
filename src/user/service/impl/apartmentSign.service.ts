@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { SignService } from '../sign.service';
 import { ApartmentSignApiEnum } from '../../constant/dailySignApiEnum';
 import { ApartmentSignApiService } from '../../api/apartmentSignApi.service';
-import { HttpService } from '../../../http/http.service';
+import { HttpService } from '../../../http/service/impl/http.service';
 import { SignApiService } from '../../api/signApi.service';
 import {
   getSubmitSignRequest,

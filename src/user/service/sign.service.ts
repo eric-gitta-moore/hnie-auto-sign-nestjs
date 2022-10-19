@@ -1,4 +1,4 @@
-import { HttpService } from '../../http/http.service';
+import { HttpService } from '../../http/service/impl/http.service';
 import { IUserOptions } from '../../types/interface';
 import { SignApiService } from '../api/signApi.service';
 import * as CryptoJS from 'crypto-js/core';

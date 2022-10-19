@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { HttpService } from '../../http/http.service';
+import { HttpService } from '../../http/service/impl/http.service';
 import { DailySignApiEnum } from '../constant/dailySignApiEnum';
 import * as formurlencoded from 'form-urlencoded';
 import {

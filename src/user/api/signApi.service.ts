@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { HttpService } from '../../http/http.service';
+import { HttpService } from '../../http/service/impl/http.service';
 import { LoginResponse } from '../dto/sign.dto';
 
 @Injectable()

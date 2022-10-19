@@ -11,6 +11,7 @@ import { SignConfig, signFormData } from 'src/index/dto/signConfigDTO';
 import { SignService } from '../../../user/service/sign.service';
 import { DailySignSubmitRequest } from '../../../user/dto/dailySignSubmit.dto';
 import { signForm2DailySignSubmitRequestDTOMapping } from '../../dto/signFormData2DailySignSubmitRequestDTOMapping';
+import { UtilService } from '../../../http/service/impl/util.service';
 
 @Injectable()
 export class IndexService {
@@ -24,6 +25,7 @@ export class IndexService {
     private readonly dailySignService: DailySignService,
     private readonly apartmentSignService: ApartmentSignService,
     private readonly configService: ConfigService,
+    private readonly utilService: UtilService,
   ) {
     this.signConfig = this.getSignConfig();
   }
@@ -54,6 +56,7 @@ export class IndexService {
     signService: SignService,
     loggerName: string,
   ) {
+    this.utilService.getServiceIp(true);
     const it = loadUserGenerator;
     let param = it.next();
     while (!param.done && param.value) {

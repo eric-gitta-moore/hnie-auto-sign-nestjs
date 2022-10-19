@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { HttpService } from 'src/http/http.service';
+import { HttpService } from 'src/http/service/impl/http.service';
 import { ApartmentSignApiEnum } from '../constant/dailySignApiEnum';
 import {
   getTaskScopeRequest,
