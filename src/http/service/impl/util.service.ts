@@ -8,19 +8,20 @@ export class UtilService {
   constructor(private readonly httpService: HttpService) {}
 
   async getServiceIp(isEchoLog = false) {
-    type ipData = {
-      rs: number;
-      code: number;
-      address: string;
-      ip: string;
-      isDomain: number;
-    };
-    const res = await this.httpService
-      .getInstance()
-      .get<ipData>('https://ip.cn/api/index?ip=&type=0');
-    if (res.data?.address && res.data?.ip && isEchoLog) {
-      this.logger.log(`当前服务器IP：[${res.data.address}]${res.data?.ip}`);
+    try {
+      const res = await this.httpService
+        .getInstance()
+        .get<string>('http://2022.ip138.com/');
+      const ipReg =
+        /((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}/i;
+      const ip = ipReg.exec(res.data)[0];
+      if (isEchoLog) {
+        this.logger.log(`当前服务器IP：${ip}`);
+      }
+      return ip;
+    } catch (e) {
+      this.logger.log('获取服务器IP失败');
     }
-    return res.data?.ip;
+    return null;
   }
 }
