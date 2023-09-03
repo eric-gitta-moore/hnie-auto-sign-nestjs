@@ -1,5 +1,5 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { HttpService } from './http.service';
+import { Injectable, Logger } from "@nestjs/common";
+import { HttpService } from "./http.service";
 
 @Injectable()
 export class UtilService {
@@ -11,7 +11,7 @@ export class UtilService {
     try {
       const res = await this.httpService
         .getInstance()
-        .get<string>('http://2022.ip138.com/');
+        .get<string>("http://test.ipw.cn/");
       const ipReg =
         /((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}/i;
       const ip = ipReg.exec(res.data)[0];
@@ -20,7 +20,7 @@ export class UtilService {
       }
       return ip;
     } catch (e) {
-      this.logger.log('获取服务器IP失败');
+      this.logger.log("获取服务器IP失败");
     }
     return null;
   }
