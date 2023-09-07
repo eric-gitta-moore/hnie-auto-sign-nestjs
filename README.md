@@ -71,8 +71,9 @@
   - `构建命令` 填写为如下
    ```shell
    yarn
-   yarn start:cron
+   yarn start:apartment
    ```
+> 如果是日常打卡，则把 `start:apartment` 替换为 `start:daily`
   - 此刻你的界面应该是这样
   - ![image.png](https://tva1.sinaimg.cn/large/008d89Swgy1h6kwwqzub8j31hs0swwmp.jpg)
 6. 配置邮件通知
