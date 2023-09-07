@@ -18,6 +18,7 @@ export class HttpService {
           'X-Requested-With': 'XMLHttpRequest',
         },
         jar: this.jar,
+        timeout: 30,
       }),
     );
   }
